@@ -1,0 +1,54 @@
+{
+    "name": "scalify/puppet-master-client-laravel",
+    "description": "Laravel package providing a client library for the puppet-master HTTP API",
+    "version": "1.0.0",
+    "homepage": "https://docs.puppet-master.io",
+    "authors": [
+        {
+            "name": "Alexander Pinnecke",
+            "email": "alex@scalify.me",
+            "homepage": "https://scalify.me",
+            "role": "developer"
+        }
+    ],
+    "support": {
+        "email": "alex@scalify.me",
+        "docs": "https://docs.puppet-master.io"
+    },
+    "keywords": [
+        "puppet-master",
+        "puppet-master.io",
+        "puppet-master client",
+        "scalify",
+        "laravel",
+        "laravel package"
+    ],
+    "license": "Apache-2.0",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "scalify/puppet-master-client": "~1.0",
+        "illuminate/support": "^5.5"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require-dev": {
+        "laravel/framework": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {"Scalify\\": "src/Scalify"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Test\\Scalify\\": "test/Scalify"}
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Scalify\\PuppetMaster\\ServiceProvider"
+            ],
+            "aliases": {
+                "Debugbar": "Scalify\\PuppetMaster\\Facade"
+            }
+        }
+    }
+}
