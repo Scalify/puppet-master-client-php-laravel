@@ -16,7 +16,7 @@ composer require scalify/puppet-master-client-laravel:~1.0
 ## populate the config
 
 ```bash
-
+php artisan vendor:publish --provider="Scalify\PuppetMaster\ServiceProvider"
 ```
 
 ## example usage
