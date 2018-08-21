@@ -1,6 +1,6 @@
 <?php
 
-namespace Scalify\PuppetMaster\Provider;
+namespace Scalify\PuppetMaster;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\ClientInterface as GuzzleClientInterface;
