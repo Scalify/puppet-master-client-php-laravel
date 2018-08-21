@@ -17,7 +17,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $configPath = __DIR__ . '/../config/puppet-master.php';
+        $configPath = $this->getPackageConfigPath();
         $this->mergeConfigFrom($configPath, 'puppet-master');
 
 
@@ -33,8 +33,8 @@ class ServiceProvider extends BaseServiceProvider
 
     public function boot()
     {
-        $configPath = __DIR__ . '/../config/puppet-master.php';
-        $this->publishes([$configPath => $this->getConfigPath()], 'config');
+        $configPath = $this->getPackageConfigPath();
+        $this->publishConfig($configPath);
     }
 
     /**
@@ -42,9 +42,9 @@ class ServiceProvider extends BaseServiceProvider
      *
      * @param  string $configPath
      */
-    protected function publishConfig($configPath)
+    private function publishConfig($configPath)
     {
-        $this->publishes([$configPath => config_path('puppet-master.php')], 'config');
+        $this->publishes([$configPath => $this->getConfigPath()], 'config');
     }
 
     /**
@@ -52,8 +52,18 @@ class ServiceProvider extends BaseServiceProvider
      *
      * @return string
      */
-    protected function getConfigPath()
+    private function getConfigPath()
     {
         return config_path('puppet-master.php');
+    }
+
+    /**
+     * Get the path of the config file distributed with the package.
+     *
+     * @return string
+     */
+    private function getPackageConfigPath(): string
+    {
+        return __DIR__ . '/config/puppet-master.php';
     }
 }
